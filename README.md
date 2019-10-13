@@ -1,5 +1,25 @@
 # seats.rb
 
+#### Goal
+Build a small example of a seats reservation webpage for some show. The page
+should present to the users a map of the show room with 25 * 20 seats. These
+seats should be with some colors:
+- green, it's free
+- grey, it's selected by me
+- light red, it's selected by other user
+- red, it's reserved
+
+Examples:
+- one user selected a seat, all users except him should see that seat light red;
+- one user reserves a seat, all users should see that seat red;
+
+All of the actions should occour in "real time", meaning as fast as possible and
+without the need of reloading the page.
+
+#### Solution:
+- making use of ActiveCable + Redis
+
+
 #### Dependencies
 * [Ruby *2.5.1*](https://www.ruby-lang.org/en/)
 * [Rails *6.0.0*](https://rubyonrails.org)
