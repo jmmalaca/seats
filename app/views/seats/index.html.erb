@@ -1,0 +1,8 @@
+<h1>Seats!</h1>
+
+<% if @presenter.any_seats? %>
+  <button onclick="reservation_click();">Reserve selected seats</button>
+  <%= @presenter.seats_table_html %>
+<% else %>
+  <h3>No seats available!</h3>
+<% end %>

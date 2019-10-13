@@ -1,0 +1,124 @@
+# Ruby standards
+# inherit_from: .rubocop_todo.yml
+
+require: rubocop-rspec
+
+AllCops:
+ DisplayCopNames: true
+ Exclude:
+   - db/**/*
+   - bin/**/*
+   - config/**/*
+   - vendor/**/*
+ TargetRubyVersion: 2.6
+Rails:
+ Enabled: true
+Style/AsciiComments:
+ Enabled: true
+Style/StringLiterals:
+ Enabled: true
+ EnforcedStyle: single_quotes
+ Exclude:
+   - db/schema.rb
+Style/BracesAroundHashParameters:
+ Enabled: true
+ EnforcedStyle: context_dependent
+Style/ClassAndModuleChildren:
+ Enabled: false
+Style/NegatedIf:
+ Enabled: false
+Style/RedundantReturn:
+ Enabled: false
+Style/RedundantSelf:
+ Enabled: false
+Style/AutoResourceCleanup:
+ Enabled: true
+Style/CollectionMethods:
+ Enabled: true
+Style/MutableConstant:
+ Enabled: true
+Style/GuardClause:
+ Enabled: false
+Style/FrozenStringLiteralComment:
+ Enabled: false
+Style/Documentation:
+ Enabled: false
+Style/Lambda:
+ Enabled: false
+Style/NumericLiterals:
+ Enabled: true
+ Exclude:
+ - db/**/*
+Style/WordArray:
+ Enabled: true
+ Exclude:
+ - db/**/*
+ModuleFunction:
+ Enabled: false
+Layout/EmptyLines:
+ Enabled: false
+Layout/EmptyLinesAroundBlockBody:
+ Enabled: false
+Layout/EmptyLinesAroundClassBody:
+ Enabled: false
+Layout/EmptyLinesAroundModuleBody:
+ Enabled: false
+Layout/TrailingWhitespace:
+ Enabled: true
+Layout/TrailingBlankLines:
+ Enabled: true
+Metrics/ModuleLength:
+ Enabled: true
+Metrics/ClassLength:
+ Enabled: true
+ Max: 150
+Metrics/LineLength:
+ Enabled: true
+ Max: 120
+Metrics/MethodLength:
+ Enabled: true
+ Max: 30
+Metrics/AbcSize:
+ Enabled: true
+ Max: 100
+Metrics/BlockLength:
+ Enabled: true
+ Exclude:
+   - spec/**/*
+   - db/**/*
+   - config/routes.rb
+Metrics/CyclomaticComplexity:
+ Enabled: true
+ Max: 8
+Metrics/PerceivedComplexity:
+ Enabled: true
+RSpec/MultipleExpectations:
+ Enabled: true
+ Max: 5
+RSpec/ExampleLength:
+ Enabled: true
+ Max: 10
+RSpec/MessageSpies:
+ Enabled: true
+ EnforcedStyle: "receive"
+RSpec/EmptyExampleGroup:
+ Enabled: true
+RSpec/DescribeClass:
+ Enabled: false
+RSpec/NestedGroups:
+ Enabled: true
+ Max: 5
+RSpec/Be:
+ Enabled: false
+RSpec/InstanceVariable:
+ Enabled: false
+RSpec/NamedSubject:
+ Enabled: false
+Lint/LiteralInInterpolation:
+ AutoCorrect: true
+Lint/HandleExceptions:
+ Enabled: true
+ Exclude:
+   - spec/**/*
+Naming/FileName:
+ Enabled: true

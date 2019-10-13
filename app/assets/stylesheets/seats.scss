@@ -1,0 +1,32 @@
+// Place all the styles related to the seats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  display: inline-block;
+  text-align: center;
+}
+
+.free:hover {
+  background-color: #f7fa64;
+}
+
+.free {
+  background-color: #90f542;
+}
+
+.selected {
+  background-color: #a69f9f;
+}
+
+.selected_by_other {
+  background-color: #f78888;
+}
+
+.reserved {
+  background-color: #f54242;
+}
