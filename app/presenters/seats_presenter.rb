@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class SeatsPresenter
-  TABLE_ROWS_DEFAULT = 20
   TABLE_ROW_COLUMNS_DEFAULT = 25
 
-  def initialize
+  def initialize(session_id)
+    @session_id = session_id
+    @seats = RedisStore.read_all
     @rows_number = seats_count / TABLE_ROW_COLUMNS_DEFAULT
   end
 
@@ -19,23 +20,26 @@ class SeatsPresenter
   private
 
   def table_html
-    (0..TABLE_ROWS_DEFAULT).map do |row|
-      ['<tr>', *row_columns(row * TABLE_ROW_COLUMNS_DEFAULT), '</tr>'].join(' ')
+    @seats.in_groups_of(TABLE_ROW_COLUMNS_DEFAULT).map do |seats|
+      '<tr>' + seats.map do |seat|
+        [
+          '<td>',
+          "<span id='seat_#{seat[:number]}'",
+          "class='dot #{seat_selected(seat)}'",
+          "onclick='seat_click(this);'>#{seat[:number]}</span>",
+          '</td>'
+        ].join(' ')
+      end.join(' ') + '</tr>'
     end
   end
 
-  def row_columns(offset)
-    Seat.ordered.batched(offset, TABLE_ROW_COLUMNS_DEFAULT).map do |seat|
-      [
-        '<td>',
-        "<span id='seat_#{seat.number}' class='dot #{seat.status}'",
-        "onclick='seat_click(this);'>#{seat.number}</span>",
-        '</td>'
-      ].join(' ')
-    end
+  def seat_selected(seat)
+    return seat[:status] if seat[:user_token] == @session_id
+
+    seat[:status] == Seat::SELECTED_STATUS ? 'selected_by_other' : seat[:status]
   end
 
   def seats_count
-    Seat.all.size
+    @seats.size
   end
 end

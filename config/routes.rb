@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   post '/seats/:id/select', to: 'seats#select'
   post '/seats/:id/deselect', to: 'seats#deselect'
+  delete '/session/seats', to: 'seats#destroy'
   get '/', to: 'seats#index'
 end

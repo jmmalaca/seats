@@ -79,6 +79,8 @@ group :test do
   gem 'factory_bot_rails'
   # https://github.com/DatabaseCleaner/database_cleaner
   gem 'database_cleaner'
+  # https://github.com/sds/mock_redis
+  gem 'mock_redis'
 end
 
 # better logs

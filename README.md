@@ -1,8 +1,9 @@
-# seats_reservation.rb
+# seats.rb
 
 #### Dependencies
 * [Ruby *2.5.1*](https://www.ruby-lang.org/en/)
 * [Rails *6.0.0*](https://rubyonrails.org)
+* [Redis *5.0.6*](https://redis.io/)
 * [PostgreSQL *11.2*](https://www.postgresql.org)
 
 #### Dependencies manager tool - [RVM](https://rvm.io)
@@ -33,4 +34,9 @@ $ rails s -p <port number> # select the port
 ```bash
 $ rspec spec/<path to file>_spec.rb # run a spec
 $ rspec # run the test suite
+```
+
+#### Redis
+```bash
+$ redis-cli monitor # redis live console
 ```

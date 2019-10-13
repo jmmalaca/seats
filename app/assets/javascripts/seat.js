@@ -40,3 +40,15 @@ function server_call (http_verb, url, data) {
     }
   });
 }
+
+window.addEventListener("beforeunload", function (_e) {
+  var e = e || window.event ;
+
+  // For Firefox and IE
+  if  ( e )  {
+    server_call ('DELETE', '/session/seats.json', JSON.stringify({}) );
+  }
+
+  // For Safari
+  server_call ('DELETE', '/session/seats.json', JSON.stringify({}) );
+});

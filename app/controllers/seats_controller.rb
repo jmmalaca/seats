@@ -4,12 +4,12 @@ class SeatsController < ApplicationController
   before_action :set_seat, only: %i[select deselect update]
 
   def index
-    @presenter = SeatsPresenter.new
+    @presenter = SeatsPresenter.new(session[:session_id])
   end
 
   def select
     @seat.status = Seat::SELECTED_STATUS
-    broadcast_seat_data(@seat.number, @seat.status)
+    cache_and_broadcast(@seat.number, session[:session_id], @seat.status)
     respond_to do |format|
       format.json { render :show, status: :ok, location: @seat }
     end
@@ -17,7 +17,7 @@ class SeatsController < ApplicationController
 
   def deselect
     @seat.status = Seat::FREE_STATUS
-    broadcast_seat_data(@seat.number, @seat.status)
+    cache_and_broadcast(@seat.number, session[:session_id], @seat.status)
     respond_to do |format|
       format.json { render :show, status: :ok, location: @seat }
     end
@@ -26,11 +26,18 @@ class SeatsController < ApplicationController
   def update
     respond_to do |format|
       if @seat.update(seat_params)
-        broadcast_seat_data(@seat.number, @seat.status)
+        cache_and_broadcast(@seat.number, session[:session_id], @seat.status)
         format.json { render :show, status: :ok, location: @seat }
       else
         format.json { render json: @seat.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    destroy_and_broadcast(session[:session_id])
+    respond_to do |format|
+      format.json {}
     end
   end
 
