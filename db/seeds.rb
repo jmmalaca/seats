@@ -15,7 +15,9 @@ default_start_status = Seat::SEATS_DEFAULT_STATUS.first
   ).first_or_create(
     number: counter,
     status: default_start_status
-  ).update_attributes!(
+  )
+
+  seat.update_attributes!(
     number: counter,
     status: default_start_status
   )
