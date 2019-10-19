@@ -22,7 +22,7 @@ without the need of reloading the page.
 
 #### Dependencies
 * [Ruby *2.5.1*](https://www.ruby-lang.org/en/)
-* [Rails *6.0.0*](https://rubyonrails.org)
+* [Rails *5.2.3*](https://rubyonrails.org)
 * [Redis *5.0.6*](https://redis.io/)
 * [PostgreSQL *11.2*](https://www.postgresql.org)
 
